@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bram Wijnen | Developer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #2b0f54, #0f103f);
+      color: white;
+    }
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1rem;
+      flex-wrap: wrap;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      min-height: 100vh;
+      padding: 6rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    h1, h2 {
+      margin-bottom: 1rem;
+    }
+    .btn {
+      background: linear-gradient(to right, #8e2de2, #4a00e0);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      margin: 1rem 0;
+      max-width: 600px;
+      width: 90%;
+    }
+    img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="home">
+    <img src="<!-- ✏️ VERVANG DIT DOOR JOUW IMGUR LINK -->" alt="Home image" />
+    <h1>Hi, I’m Bram Wijnen</h1>
+    <p>
+      I’m a Minecraft plugin developer with over three years of experience. I’ve contributed to large-scale servers including Blitz SMP (750+), LaternMC (600+), and Peak SMP (500+).<br />
+      I'm also the founder of BramCraft.
+    </p>
+    <p>
+      In addition to Minecraft plugin development, I build JavaScript-based Discord bots for server management and automation.
+    </p>
+    <a href="#contact"><button class="btn">Contact Me</button></a>
+    <a href="https://github.com/devBramCraft" target="_blank"><button class="btn">GitHub</button></a>
+  </section>
+
+  <section id="experience">
+    <img src="<!-- ✏️ VERVANG DIT DOOR JOUW IMGUR LINK -->" alt="Experience image" />
+    <h2>Experience</h2>
+
+    <div class="card">
+      <h3>CEO — BramCraft Network</h3>
+      <p>Full-stack Minecraft server management, plugin development, and community leadership.</p>
+    </div>
+    <div class="card">
+      <h3>Developer — RagePVP</h3>
+      <p>Led PvP system development, implemented custom features and Dockerized infrastructure.</p>
+    </div>
+    <div class="card">
+      <h3>Developer — Skyhaven</h3>
+      <p>Focused on plugin stability, backend improvements, and gameplay innovation.</p>
+    </div>
+    <div class="card">
+      <h3>Plugin Developer — Blitz SMP</h3>
+      <p>Contributed to gameplay balancing and backend optimization for over 750 concurrent players.</p>
+    </div>
+    <div class="card">
+      <h3>Plugin Developer — LaternMC</h3>
+      <p>Designed and developed advanced plugin functionality and performance features.</p>
+    </div>
+    <div class="card">
+      <h3>Plugin Developer — Peak SMP</h3>
+      <p>Delivered scalable plugin solutions with Java and Docker for growing SMP infrastructure.</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="card">
+      <h3><a href="https://github.com/Devbramcraft/AngelsSMP" target="_blank" style="color: white; text-decoration: underline;">AngelsSMP</a></h3>
+      <p>Advanced SMP plugin featuring ability mechanics, team systems, and gameplay modifiers.</p>
+    </div>
+    <div class="card">
+      <h3><a href="https://github.com/devBramCraft/tiertaggerbramnet" target="_blank" style="color: white; text-decoration: underline;">TierTagger</a></h3>
+      <p>Fabric mod that displays dynamic rank tags above player names, integrated with a tierlist API.</p>
+    </div>
+    <div class="card">
+      <h3>CrystalKit Plugin</h3>
+      <p>Bukkit plugin for managing PvP events and customizable player kits.</p>
+    </div>
+    <div class="card">
+      <h3>MagicFeathers Mod</h3>
+      <p>Fabric mod introducing unique magical abilities linked to custom items and effects.</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <img src="<!-- ✏️ VERVANG DIT DOOR JOUW IMGUR LINK -->" alt="About Me" />
+    <h2>About Me</h2>
+    <p>
+      I'm a passionate developer with a strong focus on performance, scalability, and automation. My core skills include Java, JavaScript, and Docker. I enjoy creating technical solutions that enhance gameplay, simplify server management, and deliver a great user experience.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Get in touch:</p>
+    <a href="mailto:bram.wijnen@bramcraft.net"><button class="btn">📧 Email</button></a>
+    <a href="https://discord.gg/HjCcfUrzzJ" target="_blank"><button class="btn">💬 Discord</button></a>
+    <a href="https://www.linkedin.com/in/bram-wijnen-66a002361/" target="_blank"><button class="btn">🔗 LinkedIn</button></a>
+    <p>Or add me on Discord: <strong>bramwijnen#0001</strong></p>
+  </section>
+</body>
+</html>
