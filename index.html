@@ -6,6 +6,10 @@
   <title>Bram Wijnen | Game Dev Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --accent: #7dd3fc;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -14,7 +18,7 @@
     }
 
     body {
-      background: #0d0d0d;
+      background: linear-gradient(135deg, #4b0082, #1e3a8a);
       color: #f0f0f0;
       font-family: 'Inter', sans-serif;
     }
@@ -23,20 +27,52 @@
       position: fixed;
       width: 100%;
       top: 0;
-      background: #111;
+      background: rgba(0, 0, 0, 0.7);
       display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 1rem;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
       z-index: 1000;
-      box-shadow: 0 0 10px #0ff;
+    }
+
+    nav .menu-links {
+      display: flex;
+      gap: 1.5rem;
     }
 
     nav a {
-      color: #0ff;
+      color: var(--accent);
       text-decoration: none;
       font-weight: bold;
       font-family: 'Orbitron', sans-serif;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .menu-links {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.95);
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 1rem;
+        border-radius: 10px;
+      }
+
+      .menu-links.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
     }
 
     section {
@@ -52,38 +88,45 @@
     h1, h2 {
       margin-bottom: 1rem;
       font-family: 'Orbitron', sans-serif;
-      color: #00f7ff;
-      text-shadow: 0 0 10px #00f7ff;
+      color: var(--accent);
+      text-shadow: 0 0 10px var(--accent);
     }
 
     .btn {
-      background: #111;
-      color: #0ff;
+      background: transparent;
+      color: var(--accent);
       padding: 1rem 2rem;
-      border: 2px solid #0ff;
+      border: 2px solid var(--accent);
       border-radius: 8px;
       font-size: 1rem;
       cursor: pointer;
-      margin: 1rem auto;
       font-family: 'Orbitron', sans-serif;
       transition: all 0.3s ease;
     }
 
     .btn:hover {
-      background: #0ff;
-      color: #111;
-      box-shadow: 0 0 15px #0ff;
+      background: var(--accent);
+      color: #0a0a0a;
+      box-shadow: 0 0 15px var(--accent);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
     }
 
     .card {
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid #0ff3;
+      border: 1px solid var(--accent);
       padding: 1.5rem;
       border-radius: 1rem;
       margin: 1rem 0;
       max-width: 600px;
       width: 90%;
-      box-shadow: 0 0 20px #00f7ff20;
+      box-shadow: 0 0 20px var(--accent + 20%);
     }
 
     img {
@@ -91,44 +134,37 @@
       max-width: 600px;
       border-radius: 10px;
       margin-bottom: 1rem;
-      border: 2px solid #0ff5;
-    }
-
-    hr {
-      width: 200px;
-      margin: 1rem auto;
-      border: none;
-      border-top: 2px dashed #0ff3;
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        align-items: center;
-      }
+      border: 2px solid var(--accent);
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="#home">Home</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+    <div style="font-family: 'Orbitron'; font-size: 1.2rem; color: var(--accent);">BramCraft</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="menu-links" id="menu">
+      <a href="#home">Home</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
 
   <section id="home">
     <img src="home.jpg" alt="Home image" />
     <h1>Bram Wijnen</h1>
     <p>
-      I'm a 13-year-old developer who builds high-performance Minecraft plugins and automation tools. I've contributed to top-tier servers like Blitz SMP, LaternMC, and Peak SMP.
+      I'm a 13-year-old developer who builds high-performance Minecraft plugins and automation tools.
+      I've contributed to popular servers like Blitz SMP, LaternMC, and Peak SMP.
     </p>
     <p>
-      I also create custom Discord bots and scalable systems using Java, JavaScript, Docker, and testing with Karate.
+      I create scalable systems with Java, JavaScript, Docker, and Karate for testing. I also build Discord bots for custom automation.
     </p>
-    <a href="#contact"><button class="btn">Contact Me</button></a>
-    <a href="https://github.com/devBramCraft" target="_blank"><button class="btn">GitHub</button></a>
+    <div class="btn-row">
+      <a href="#contact"><button class="btn">Contact Me</button></a>
+      <a href="https://github.com/devBramCraft" target="_blank"><button class="btn">GitHub</button></a>
+    </div>
   </section>
 
   <section id="experience">
@@ -163,11 +199,11 @@
   <section id="projects">
     <h2>Projects</h2>
     <div class="card">
-      <h3><a href="https://github.com/Devbramcraft/AngelsSMP" target="_blank" style="color: #0ff;">AngelsSMP</a></h3>
+      <h3><a href="https://github.com/Devbramcraft/AngelsSMP" target="_blank" style="color: var(--accent);">AngelsSMP</a></h3>
       <p>Ability-based SMP with plugin-driven mechanics, teams and progression systems.</p>
     </div>
     <div class="card">
-      <h3><a href="https://github.com/devBramCraft/tiertaggerbramnet" target="_blank" style="color: #0ff;">TierTagger</a></h3>
+      <h3><a href="https://github.com/devBramCraft/tiertaggerbramnet" target="_blank" style="color: var(--accent);">TierTagger</a></h3>
       <p>Fabric mod that displays tier labels above player heads, synced with an external tierlist API.</p>
     </div>
     <div class="card">
@@ -190,11 +226,19 @@
   </section>
 
   <section id="contact">
-    <a href="mailto:bram.wijnen@bramcraft.net"><button class="btn">Email Me</button></a>
-    <hr />
-    <a href="https://discord.gg/HjCcfUrzzJ" target="_blank"><button class="btn">Discord</button></a>
-    <hr />
-    <a href="https://www.linkedin.com/in/bram-wijnen-66a002361/" target="_blank"><button class="btn">LinkedIn</button></a>
+    <h2>Contact</h2>
+    <div class="btn-row">
+      <a href="mailto:bram.wijnen@bramcraft.net"><button class="btn">Email Me</button></a>
+      <a href="https://discord.gg/HjCcfUrzzJ" target="_blank"><button class="btn">Discord</button></a>
+      <a href="https://www.linkedin.com/in/bram-wijnen-66a002361/" target="_blank"><button class="btn">LinkedIn</button></a>
+    </div>
   </section>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('show');
+    }
+  </script>
 </body>
 </html>
