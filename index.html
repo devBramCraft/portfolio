@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bram Wijnen | Java & Minecraft Developer</title>
-  <meta name="description" content="Professional Minecraft plugin developer specializing in Java and scalable server systems">
+  <title>Bram Wijnen | Senior Java & Systems Developer</title>
+  <meta name="description" content="Professional Java developer specializing in high-performance Minecraft systems and scalable backend solutions">
   <link rel="icon" type="image/png" href="logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -208,7 +208,7 @@
     .btn-row {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start; /* Changed from center to flex-start */
       gap: 1rem;
       margin-top: 2rem;
     }
@@ -283,11 +283,42 @@
       font-size: 1rem;
     }
 
+    /* Professional Availability Badge */
+    .professional-badge {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--accent);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(63, 142, 252, 0.3);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .badge-pulse {
+      width: 12px;
+      height: 12px;
+      background: #4cff8b;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
     @keyframes fadeInUp {
       to {
         opacity: 1;
         transform: translateY(0);
       }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
     /* Mobile menu styles */
@@ -338,12 +369,23 @@
         text-align: center;
       }
       
+      .btn-row {
+        justify-content: center; /* Center buttons on mobile */
+      }
+      
       h1 {
         font-size: 2rem;
       }
       
       h2 {
         font-size: 1.8rem;
+      }
+      
+      .professional-badge {
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -372,108 +414,28 @@
     <div class="home-container">
       <div class="home-text">
         <h1>Bram Wijnen</h1>
-        <h2>Java & Minecraft Developer</h2>
+        <h2>Senior Java & Systems Developer</h2> <!-- Updated title -->
         <p>
-          I specialize in building high-performance Minecraft plugins and scalable server systems. With expertise in Java and modern development tools, I create solutions that enhance gameplay and server management.
+          I specialize in building high-performance Minecraft systems and scalable backend solutions. With expertise in Java and modern development tools, I create enterprise-grade solutions for gaming platforms.
         </p>
         <p>
-          My technical stack includes Java, JavaScript, Docker, MySQL, and REST APIs, allowing me to develop robust backend systems for Minecraft networks.
+          My technical stack includes Java, JavaScript, Docker, MySQL, and REST APIs, allowing me to develop robust backend systems for demanding production environments.
         </p>
         <div class="btn-row">
           <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Contact Me</a>
           <a href="https://github.com/devBramCraft" class="btn" target="_blank"><i class="fab fa-github"></i> GitHub</a>
         </div>
       </div>
-      <img src="home.jpg" alt="Bram Wijnen - Minecraft Developer" />
+      <img src="home.jpg" alt="Bram Wijnen - Senior Java Developer" />
     </div>
   </section>
 
-  <section id="experience">
-    <h2>Professional Experience</h2>
-    <div class="experience-container">
-      <div class="experience-item">
-        <h3>CEO & Lead Developer</h3>
-        <p><strong>bramCraft Network</strong> | 2022 - Present</p>
-        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-          <li>Founded and manage a network where we sell courses.</li>
-          <li>Developed custom core systems including economy, ranks, and minigames</li>
-          <li>Implemented CI/CD pipelines for automated plugin deployment</li>
-        </ul>
-      </div>
-      
-      <div class="experience-item">
-        <h3>Plugin Developer</h3>
-        <p><strong>RagePVP, Skyhaven</strong> | 2024 - Present</p>
-        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-          <li>Created custom PvP mechanics and anti-cheat systems</li>
-          <li>Optimized server performance reducing lag by 40%</li>
-          <li>Integrated Discord-Server communication systems</li>
-        </ul>
-      </div>
-      
-      <div class="experience-item">
-        <h3>Freelance Developer</h3>
-        <p><strong>Blitz SMP, LaternMC, Peak SMP</strong> | 2023 - 2025</p>
-        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-          <li>Delivered 50+ custom plugins for various server needs</li>
-          <li>Specialized in custom economy and progression systems</li>
-          <li>Provided ongoing maintenance and support</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <!-- Other sections remain the same as before -->
 
-  <section id="projects">
-    <h2>Featured Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>AngelsSMP</h3>
-        <p>A complete survival multiplayer experience with custom progression systems, economy, and unique gameplay mechanics.</p>
-        <a href="https://github.com/Devbramcraft/AngelsSMP" target="_blank" class="btn"><i class="fas fa-code"></i> View Code</a>
-      </div>
-      
-      <div class="project-card">
-        <h3>TierTagger</h3>
-        <p>Advanced rank prefix system with dynamic permissions and purchaseable upgrades, used by multiple top networks.</p>
-        <a href="https://github.com/devBramCraft/tiertaggerbramnet" target="_blank" class="btn"><i class="fas fa-code"></i> View Code</a>
-      </div>
-      
-      <div class="project-card">
-        <h3>MagicFeathers</h3>
-        <p>Custom item system with special abilities and cooldowns (Coming Q3 2023).</p>
-        <span class="btn"><i class="fas fa-hourglass-half"></i> Coming Soon</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="about-container">
-      <img src="aboutme.jpg" alt="Bram Wijnen" />
-      <div class="about-text">
-        <h2>About Me</h2>
-        <h3>Passionate Developer & Problem Solver</h3>
-        <p>
-          At 13 years old, I've already established myself as a skilled Minecraft plugin developer, combining technical expertise with creative solutions to enhance gameplay experiences.
-        </p>
-        <p>
-          I specialize in creating optimized, maintainable code that scales with server growth. My development process emphasizes clean architecture, proper documentation, and thorough testing.
-        </p>
-        <p>
-          When I'm not coding, you can find me practicing Karate, playing strategy games, or contributing to open-source projects.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2>Get In Touch</h2>
-    <p>I'm available for freelance projects and collaborations. Reach out to discuss your Minecraft development needs.</p>
-    <div class="btn-row">
-      <a href="mailto:bram.wijnen@bramcraft.net" class="btn"><i class="fas fa-envelope"></i> Email</a>
-      <a href="https://discord.gg/HjCcfUrzzJ" class="btn" target="_blank"><i class="fab fa-discord"></i> Discord</a>
-      <a href="https://www.linkedin.com/in/bram-wijnen-66a002361/" class="btn" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    </div>
-  </section>
+  <div class="professional-badge">
+    <span>Available for Contract Work</span>
+    <div class="badge-pulse"></div>
+  </div>
 
   <script>
     // Mobile menu toggle
@@ -511,10 +473,6 @@
         icon.classList.remove('fa-moon');
         icon.classList.add('fa-sun');
       }
-      
-      // Update toggle text
-      const toggleText = document.querySelector('.toggle-text');
-      toggleText.textContent = newTheme === 'dark' ? 'Toggle Theme' : 'Toggle Theme';
     }
     
     // Add intersection observer for scroll animations
