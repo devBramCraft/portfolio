@@ -292,6 +292,57 @@
       border-top: 4px solid var(--accent);
     }
 
+    /* Contact Page Styles */
+    .contact-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: var(--panel);
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .contact-card {
+      background: var(--bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(138, 138, 138, 0.1);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact-card i {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .contact-card h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       nav {
@@ -309,6 +360,10 @@
       h1 {
         font-size: 2rem;
       }
+
+      .contact-methods {
+        grid-template-columns: 1fr;
+      }
     }
 
     @keyframes fadeIn {
@@ -320,10 +375,10 @@
 <body>
   <nav>
     <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#about">About</a>
+      <a href="https://bramcraftdev.netlify.app/#home">Home</a>
+      <a href="https://bramcraftdev.netlify.app/#experience">Experience</a>
+      <a href="https://bramcraftdev.netlify.app/#projects">Projects</a>
+      <a href="https://bramcraftdev.netlify.app/#about">About</a>
       <a href="#contact">Contact</a>
       <a href="#pricing">Pricing</a>
     </div>
@@ -333,256 +388,294 @@
   </nav>
 
   <main>
-    <h1>Development Services & Pricing</h1>
-    <div class="pricing-intro">
-      <p>Custom solutions tailored to your needs. Choose from one-time projects or long-term collaboration options.</p>
-    </div>
-
-    <div class="pricing-tabs">
-      <button class="tab-btn active" data-tab="plugins">Java Plugins</button>
-      <button class="tab-btn" data-tab="webdev">Web Development</button>
-      <button class="tab-btn" data-tab="bots">JavaScript Bots</button>
-      <button class="tab-btn" data-tab="longterm">Long-Term Hire</button>
-    </div>
-
-    <!-- Java Plugins Tab -->
-    <div id="plugins" class="tab-content active">
-      <h2>Minecraft Java Plugin Development</h2>
-      <p>Custom plugins built for Spigot/Paper servers with optimized performance and clean code.</p>
+    <!-- Contact Page Section -->
+    <section id="contact" class="contact-container" style="display: none;">
+      <h1>Contact Me</h1>
+      <p style="text-align: center;">Get in touch for project inquiries, collaborations, or any questions you might have.</p>
       
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <h3>Basic Plugin</h3>
-          <div class="price">$50-150</div>
-          <ul class="features-list">
-            <li>Simple custom plugin</li>
-            <li>1-2 core features</li>
-            <li>Basic configuration</li>
-            <li>1 revision round</li>
-            <li>1 week delivery</li>
-          </ul>
-          <a href="#contact" class="btn">Get Started</a>
+      <div class="contact-methods">
+        <div class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <h3>Email</h3>
+          <p>For professional inquiries and project discussions</p>
+          <a href="mailto:bram.wijnen@bramcraft.net">bram.wijnen@bramcraft.net</a>
         </div>
         
-        <div class="pricing-card popular">
-          <div class="popular-tag">POPULAR</div>
-          <h3>Advanced Plugin</h3>
-          <div class="price">$150-400</div>
-          <ul class="features-list">
-            <li>Medium complexity plugin</li>
-            <li>3-5 core features</li>
-            <li>Custom GUI/API integration</li>
-            <li>MySQL support</li>
-            <li>3 revision rounds</li>
-            <li>2 weeks delivery</li>
-          </ul>
-          <a href="#contact" class="btn">Get Started</a>
+        <div class="contact-card">
+          <i class="fab fa-discord"></i>
+          <h3>Discord</h3>
+          <p>Join my server for quick communication</p>
+          <a href="https://discord.gg/HjCcfUrzzJ" target="_blank">Discord Server</a>
         </div>
         
-        <div class="pricing-card">
-          <h3>Premium System</h3>
-          <div class="price">$400-1000+</div>
-          <ul class="features-list">
-            <li>Complex plugin/system</li>
-            <li>Multiple integrated features</li>
-            <li>Custom API/economy</li>
-            <li>Advanced configuration</li>
-            <li>5+ revision rounds</li>
-            <li>1 month+ development</li>
-          </ul>
-          <a href="#contact" class="btn">Get Started</a>
+        <div class="contact-card">
+          <i class="fas fa-phone"></i>
+          <h3>Call or Message</h3>
+          <p>Available for calls or WhatsApp messages</p>
+          <a href="tel:31625590736">+31 6 25590736</a>
         </div>
       </div>
       
-      <h3>Popular Plugin Addons</h3>
-      <div class="addons-grid">
-        <div class="addon-card">
-          <h4>TierTagger System</h4>
-          <p>Custom rank prefix system with purchaseable upgrades and dynamic permissions.</p>
-          <p><strong>$75-200</strong> addon</p>
-        </div>
-        <div class="addon-card">
-          <h4>Custom Economy</h4>
-          <p>Integrated economy system with shops, banks, and custom currency.</p>
-          <p><strong>$100-250</strong> addon</p>
-        </div>
-        <div class="addon-card">
-          <h4>Minigame Framework</h4>
-          <p>Custom minigame system with lobby, queues, and score tracking.</p>
-          <p><strong>$150-300</strong> addon</p>
-        </div>
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="#pricing" class="btn" style="max-width: 300px; margin: 0 auto;">
+          <i class="fas fa-arrow-left"></i> Back to Pricing
+        </a>
       </div>
-    </div>
+    </section>
 
-    <!-- Web Development Tab -->
-    <div id="webdev" class="tab-content">
-      <h2>Website Development</h2>
-      <p>Custom websites for Minecraft servers or personal/professional use.</p>
-      
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <h3>Basic Website</h3>
-          <div class="price">$100-250</div>
-          <ul class="features-list">
-            <li>1-3 page static site</li>
-            <li>Responsive design</li>
-            <li>Basic styling</li>
-            <li>1 revision round</li>
-            <li>1 week delivery</li>
-          </ul>
-          <a href="#contact" class="btn">Get Started</a>
-        </div>
-        
-        <div class="pricing-card popular">
-          <div class="popular-tag">POPULAR</div>
-          <h3>Dynamic Site</h3>
-          <div class="price">$250-600</div>
-          <ul class="features-list">
-            <li>5-10 page dynamic site</li>
-            <li>Custom design</li>
-            <li>User accounts</li>
-            <li>Database integration</li>
-            <li>3 revision rounds</li>
-            <li>2-3 weeks delivery</li>
-          </ul>
-          <a href="#contact" class="btn">Get Started</a>
-        </div>
-        
-        <div class="pricing-card">
-          <h3>Full Web App</h3>
-          <div class="price">$600-2000+</div>
-          <ul class="features-list">
-            <li>Complex web application</li>
-            <li>Custom backend</li>
-            <li>API integration</li>
-            <li>Payment systems</li>
-            <li>5+ revision rounds</li>
-            <li>1 month+ development</li>
-          </ul>
-          <a href="#contact" class="btn">Get Started</a>
-        </div>
+    <!-- Pricing Page Section -->
+    <section id="pricing">
+      <h1>Development Services & Pricing</h1>
+      <div class="pricing-intro">
+        <p>Custom solutions tailored to your needs. Choose from one-time projects or long-term collaboration options.</p>
       </div>
-      
-      <h3>Web Addons</h3>
-      <div class="addons-grid">
-        <div class="addon-card">
-          <h4>Server Status</h4>
-          <p>Live Minecraft server status panel with player tracking.</p>
-          <p><strong>$50-150</strong> addon</p>
-        </div>
-        <div class="addon-card">
-          <h4>Store Integration</h4>
-          <p>Integrated Tebex/Buycraft store with custom design.</p>
-          <p><strong>$75-200</strong> addon</p>
-        </div>
-        <div class="addon-card">
-          <h4>Discord Link</h4>
-          <p>Discord bot integration with verification and sync.</p>
-          <p><strong>$50-150</strong> addon</p>
-        </div>
-      </div>
-    </div>
 
-    <!-- JavaScript Bots Tab -->
-    <div id="bots" class="tab-content">
-      <h2>Discord/JavaScript Bots</h2>
-      <p>Custom Discord bots for server management, games, and utilities.</p>
-      
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <h3>Basic Bot</h3>
-          <div class="price">$50-150</div>
-          <ul class="features-list">
-            <li>Simple commands</li>
-            <li>Basic moderation</li>
-            <li>1-2 features</li>
-            <li>1 revision round</li>
-            <li>1 week delivery</li>
-          </ul>
-          <a href="#contact" class="btn">Get Started</a>
+      <div class="pricing-tabs">
+        <button class="tab-btn active" data-tab="plugins">Java Plugins</button>
+        <button class="tab-btn" data-tab="webdev">Web Development</button>
+        <button class="tab-btn" data-tab="bots">JavaScript Bots</button>
+        <button class="tab-btn" data-tab="longterm">Long-Term Hire</button>
+      </div>
+
+      <!-- Java Plugins Tab -->
+      <div id="plugins" class="tab-content active">
+        <h2>Minecraft Java Plugin Development</h2>
+        <p>Custom plugins built for Spigot/Paper servers with optimized performance and clean code.</p>
+        
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3>Basic Plugin</h3>
+            <div class="price">$50-150</div>
+            <ul class="features-list">
+              <li>Simple custom plugin</li>
+              <li>1-2 core features</li>
+              <li>Basic configuration</li>
+              <li>1 revision round</li>
+              <li>1 week delivery</li>
+            </ul>
+            <a href="#contact" class="btn get-started-btn">Get Started</a>
+          </div>
+          
+          <div class="pricing-card popular">
+            <div class="popular-tag">POPULAR</div>
+            <h3>Advanced Plugin</h3>
+            <div class="price">$150-400</div>
+            <ul class="features-list">
+              <li>Medium complexity plugin</li>
+              <li>3-5 core features</li>
+              <li>Custom GUI/API integration</li>
+              <li>MySQL support</li>
+              <li>3 revision rounds</li>
+              <li>2 weeks delivery</li>
+            </ul>
+            <a href="#contact" class="btn get-started-btn">Get Started</a>
+          </div>
+          
+          <div class="pricing-card">
+            <h3>Premium System</h3>
+            <div class="price">$400-1000+</div>
+            <ul class="features-list">
+              <li>Complex plugin/system</li>
+              <li>Multiple integrated features</li>
+              <li>Custom API/economy</li>
+              <li>Advanced configuration</li>
+              <li>5+ revision rounds</li>
+              <li>1 month+ development</li>
+            </ul>
+            <a href="#contact" class="btn get-started-btn">Get Started</a>
+          </div>
         </div>
         
-        <div class="pricing-card popular">
-          <div class="popular-tag">POPULAR</div>
-          <h3>Advanced Bot</h3>
-          <div class="price">$150-400</div>
-          <ul class="features-list">
-            <li>Custom commands</li>
-            <li>Database integration</li>
-            <li>Web dashboard</li>
-            <li>3-5 features</li>
-            <li>3 revision rounds</li>
-            <li>2 weeks delivery</li>
-          </ul>
-          <a href="#contact" class="btn">Get Started</a>
-        </div>
-        
-        <div class="pricing-card">
-          <h3>Premium Bot System</h3>
-          <div class="price">$400-1000+</div>
-          <ul class="features-list">
-            <li>Complex bot system</li>
-            <li>Multiple integrations</li>
-            <li>Custom API</li>
-            <li>User accounts</li>
-            <li>5+ features</li>
-            <li>1 month+ development</li>
-          </ul>
-          <a href="#contact" class="btn">Get Started</a>
+        <h3>Popular Plugin Addons</h3>
+        <div class="addons-grid">
+          <div class="addon-card">
+            <h4>TierTagger System</h4>
+            <p>Custom rank prefix system with purchaseable upgrades and dynamic permissions.</p>
+            <p><strong>$75-200</strong> addon</p>
+          </div>
+          <div class="addon-card">
+            <h4>Custom Economy</h4>
+            <p>Integrated economy system with shops, banks, and custom currency.</p>
+            <p><strong>$100-250</strong> addon</p>
+          </div>
+          <div class="addon-card">
+            <h4>Minigame Framework</h4>
+            <p>Custom minigame system with lobby, queues, and score tracking.</p>
+            <p><strong>$150-300</strong> addon</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Long-Term Hire Tab -->
-    <div id="longterm" class="tab-content">
-      <h2>Long-Term Hire Options</h2>
-      <p>Ongoing development and maintenance for your projects.</p>
-      
-      <div class="hire-options">
-        <div class="hire-card">
-          <h3>Part-Time</h3>
-          <div class="price">$500-1000/month</div>
-          <ul class="features-list">
-            <li>10-15 hours/week</li>
-            <li>Ongoing maintenance</li>
-            <li>Feature updates</li>
-            <li>Priority support</li>
-            <li>Weekly updates</li>
-          </ul>
-          <a href="#contact" class="btn">Inquire Now</a>
+      <!-- Web Development Tab -->
+      <div id="webdev" class="tab-content">
+        <h2>Website Development</h2>
+        <p>Custom websites for Minecraft servers or personal/professional use.</p>
+        
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3>Basic Website</h3>
+            <div class="price">$100-250</div>
+            <ul class="features-list">
+              <li>1-3 page static site</li>
+              <li>Responsive design</li>
+              <li>Basic styling</li>
+              <li>1 revision round</li>
+              <li>1 week delivery</li>
+            </ul>
+            <a href="#contact" class="btn get-started-btn">Get Started</a>
+          </div>
+          
+          <div class="pricing-card popular">
+            <div class="popular-tag">POPULAR</div>
+            <h3>Dynamic Site</h3>
+            <div class="price">$250-600</div>
+            <ul class="features-list">
+              <li>5-10 page dynamic site</li>
+              <li>Custom design</li>
+              <li>User accounts</li>
+              <li>Database integration</li>
+              <li>3 revision rounds</li>
+              <li>2-3 weeks delivery</li>
+            </ul>
+            <a href="#contact" class="btn get-started-btn">Get Started</a>
+          </div>
+          
+          <div class="pricing-card">
+            <h3>Full Web App</h3>
+            <div class="price">$600-2000+</div>
+            <ul class="features-list">
+              <li>Complex web application</li>
+              <li>Custom backend</li>
+              <li>API integration</li>
+              <li>Payment systems</li>
+              <li>5+ revision rounds</li>
+              <li>1 month+ development</li>
+            </ul>
+            <a href="#contact" class="btn get-started-btn">Get Started</a>
+          </div>
         </div>
         
-        <div class="hire-card">
-          <h3>Full-Time</h3>
-          <div class="price">$1500-3000/month</div>
-          <ul class="features-list">
-            <li>30-40 hours/week</li>
-            <li>Dedicated developer</li>
-            <li>Full project management</li>
-            <li>24/7 emergency support</li>
-            <li>Daily updates</li>
-          </ul>
-          <a href="#contact" class="btn">Inquire Now</a>
+        <h3>Web Addons</h3>
+        <div class="addons-grid">
+          <div class="addon-card">
+            <h4>Server Status</h4>
+            <p>Live Minecraft server status panel with player tracking.</p>
+            <p><strong>$50-150</strong> addon</p>
+          </div>
+          <div class="addon-card">
+            <h4>Store Integration</h4>
+            <p>Integrated Tebex/Buycraft store with custom design.</p>
+            <p><strong>$75-200</strong> addon</p>
+          </div>
+          <div class="addon-card">
+            <h4>Discord Link</h4>
+            <p>Discord bot integration with verification and sync.</p>
+            <p><strong>$50-150</strong> addon</p>
+          </div>
         </div>
       </div>
-      
-      <h3>What's Included:</h3>
-      <ul class="features-list">
-        <li>Custom development based on your needs</li>
-        <li>Regular updates and new features</li>
-        <li>Bug fixes and troubleshooting</li>
-        <li>Performance optimization</li>
-        <li>Technical consulting</li>
-      </ul>
-    </div>
 
-    <div style="text-align: center; margin-top: 4rem;">
-      <h2>Ready to Start Your Project?</h2>
-      <p>Contact me to discuss your specific needs and get a personalized quote.</p>
-      <a href="#contact" class="btn" style="max-width: 300px; margin: 1rem auto;">
-        <i class="fas fa-envelope"></i> Contact Me
-      </a>
-    </div>
+      <!-- JavaScript Bots Tab -->
+      <div id="bots" class="tab-content">
+        <h2>Discord/JavaScript Bots</h2>
+        <p>Custom Discord bots for server management, games, and utilities.</p>
+        
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3>Basic Bot</h3>
+            <div class="price">$50-150</div>
+            <ul class="features-list">
+              <li>Simple commands</li>
+              <li>Basic moderation</li>
+              <li>1-2 features</li>
+              <li>1 revision round</li>
+              <li>1 week delivery</li>
+            </ul>
+            <a href="#contact" class="btn get-started-btn">Get Started</a>
+          </div>
+          
+          <div class="pricing-card popular">
+            <div class="popular-tag">POPULAR</div>
+            <h3>Advanced Bot</h3>
+            <div class="price">$150-400</div>
+            <ul class="features-list">
+              <li>Custom commands</li>
+              <li>Database integration</li>
+              <li>Web dashboard</li>
+              <li>3-5 features</li>
+              <li>3 revision rounds</li>
+              <li>2 weeks delivery</li>
+            </ul>
+            <a href="#contact" class="btn get-started-btn">Get Started</a>
+          </div>
+          
+          <div class="pricing-card">
+            <h3>Premium Bot System</h3>
+            <div class="price">$400-1000+</div>
+            <ul class="features-list">
+              <li>Complex bot system</li>
+              <li>Multiple integrations</li>
+              <li>Custom API</li>
+              <li>User accounts</li>
+              <li>5+ features</li>
+              <li>1 month+ development</li>
+            </ul>
+            <a href="#contact" class="btn get-started-btn">Get Started</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Long-Term Hire Tab -->
+      <div id="longterm" class="tab-content">
+        <h2>Long-Term Hire Options</h2>
+        <p>Ongoing development and maintenance for your projects.</p>
+        
+        <div class="hire-options">
+          <div class="hire-card">
+            <h3>Part-Time</h3>
+            <div class="price">$500-1000/month</div>
+            <ul class="features-list">
+              <li>10-15 hours/week</li>
+              <li>Ongoing maintenance</li>
+              <li>Feature updates</li>
+              <li>Priority support</li>
+              <li>Weekly updates</li>
+            </ul>
+            <a href="#contact" class="btn get-started-btn">Inquire Now</a>
+          </div>
+          
+          <div class="hire-card">
+            <h3>Full-Time</h3>
+            <div class="price">$1500-3000/month</div>
+            <ul class="features-list">
+              <li>30-40 hours/week</li>
+              <li>Dedicated developer</li>
+              <li>Full project management</li>
+              <li>24/7 emergency support</li>
+              <li>Daily updates</li>
+            </ul>
+            <a href="#contact" class="btn get-started-btn">Inquire Now</a>
+          </div>
+        </div>
+        
+        <h3>What's Included:</h3>
+        <ul class="features-list">
+          <li>Custom development based on your needs</li>
+          <li>Regular updates and new features</li>
+          <li>Bug fixes and troubleshooting</li>
+          <li>Performance optimization</li>
+          <li>Technical consulting</li>
+        </ul>
+      </div>
+
+      <div style="text-align: center; margin-top: 4rem;">
+        <h2>Ready to Start Your Project?</h2>
+        <p>Contact me to discuss your specific needs and get a personalized quote.</p>
+        <a href="#contact" class="btn" style="max-width: 300px; margin: 1rem auto;">
+          <i class="fas fa-envelope"></i> Contact Me
+        </a>
+      </div>
+    </section>
   </main>
 
   <script>
@@ -617,14 +710,53 @@
       });
     });
 
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+    // Page switching functionality
+    function showPage(pageId) {
+      document.querySelectorAll('section').forEach(section => {
+        section.style.display = 'none';
       });
+      document.getElementById(pageId).style.display = 'block';
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Handle hash changes
+    window.addEventListener('load', function() {
+      const hash = window.location.hash;
+      if (hash === '#contact') {
+        showPage('contact');
+      } else {
+        showPage('pricing');
+      }
+    });
+
+    window.addEventListener('hashchange', function() {
+      const hash = window.location.hash;
+      if (hash === '#contact') {
+        showPage('contact');
+      } else {
+        showPage('pricing');
+      }
+    });
+
+    // Make all "Get Started" buttons go to contact page
+    document.querySelectorAll('.get-started-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.hash = 'contact';
+        showPage('contact');
+      });
+    });
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      const hash = window.location.hash;
+      if (hash === '#contact') {
+        showPage('contact');
+      } else {
+        showPage('pricing');
+      }
     });
   </script>
 </body>
