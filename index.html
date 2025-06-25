@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bram Wijnen | Game Dev Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Bram Wijnen | Developer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --accent: #a855f7;
-      --bg: #0a0a0a;
-      --panel: #111111;
+      --bg: #0f0f11;
+      --panel: #18181b;
+      --text: #eaeaea;
+      --accent: #7e5bef;
     }
 
     * {
@@ -20,91 +21,118 @@
     }
 
     body {
-      background: linear-gradient(135deg, #1b0042, #0b1a40);
-      color: #f0f0f0;
+      background-color: var(--bg);
+      color: var(--text);
       font-family: 'Inter', sans-serif;
+      line-height: 1.6;
     }
 
     nav {
       position: fixed;
       width: 100%;
       top: 0;
-      background: var(--panel);
+      background-color: var(--panel);
+      padding: 1rem 2rem;
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      padding: 1rem;
-      z-index: 1000;
-      box-shadow: 0 0 10px var(--accent);
-      font-family: 'Orbitron', sans-serif;
+      gap: 2rem;
+      z-index: 999;
+      border-bottom: 1px solid #2e2e33;
     }
 
     nav a {
       color: var(--accent);
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffffff;
     }
 
     section {
       min-height: 100vh;
-      padding: 6rem 2rem 2rem;
+      padding: 7rem 2rem 3rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    section:nth-child(even) {
+      background-color: #141417;
     }
 
     h1, h2 {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--accent);
       margin-bottom: 1rem;
-      font-family: 'Orbitron', sans-serif;
-      color: var(--accent);
-      text-shadow: 0 0 10px var(--accent);
     }
 
-    .btn {
-      background: transparent;
-      color: var(--accent);
-      padding: 1rem 2rem;
-      border: 2px solid var(--accent);
-      border-radius: 8px;
+    p {
+      max-width: 700px;
+      margin-bottom: 1rem;
       font-size: 1rem;
-      cursor: pointer;
-      font-family: 'Orbitron', sans-serif;
-      transition: all 0.3s ease;
-    }
-
-    .btn:hover {
-      background: var(--accent);
-      color: #0a0a0a;
-      box-shadow: 0 0 15px var(--accent);
-    }
-
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 1.5rem;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--accent);
-      padding: 1.5rem;
-      border-radius: 1rem;
-      margin: 1rem 0;
-      max-width: 600px;
-      width: 90%;
-      box-shadow: 0 0 20px #0f0f0f80;
     }
 
     img {
       width: 100%;
       max-width: 600px;
-      border-radius: 10px;
-      margin-bottom: 1rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    .card {
+      background: var(--panel);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      background-color: transparent;
       border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: var(--accent);
+      color: #fff;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @media (max-width: 600px) {
@@ -124,87 +152,75 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <section id="home">
-    <img src="home.jpg" alt="Home image" />
+  <section id="home" style="animation-delay: 0.1s;">
+    <img src="home.jpg" alt="Screenshot of Bram’s Minecraft work" />
     <h1>Bram Wijnen</h1>
     <p>
-      I'm a 13-year-old developer who builds high-performance Minecraft plugins and automation tools.
-      I've contributed to popular servers like Blitz SMP, LaternMC, and Peak SMP.
+      I’m a 13-year-old developer specialized in Java and Minecraft plugin development.
+      I’ve built scalable systems and automation tools used by top Minecraft servers.
     </p>
     <p>
-      I create scalable systems with Java, JavaScript, Docker, and Karate for testing. I also build Discord bots for custom automation.
+      My stack includes Java, JavaScript, Docker, and Karate for API testing.
     </p>
     <div class="btn-row">
-      <a href="#contact"><button class="btn">Contact Me</button></a>
-      <a href="https://github.com/devBramCraft" target="_blank"><button class="btn">GitHub</button></a>
+      <a href="#contact" class="btn">Contact Me</a>
+      <a href="https://github.com/devBramCraft" class="btn" target="_blank">GitHub</a>
     </div>
   </section>
 
-  <section id="experience">
-    <img src="experience.jpg" alt="Experience image" />
+  <section id="experience" style="animation-delay: 0.3s;">
+    <img src="experience.jpg" alt="Overview of developer experience" />
     <h2>Experience</h2>
     <div class="card">
       <h3>CEO — BramCraft Network</h3>
-      <p>Custom plugin development, server hosting, and full-stack SMP leadership.</p>
+      <p>Managing plugin development, hosting environments, and full-stack gameplay systems.</p>
     </div>
     <div class="card">
       <h3>Developer — RagePVP</h3>
-      <p>Custom combat systems and Dockerized infrastructure for high-load PvP environments.</p>
+      <p>Combat plugin architecture and Docker-based deployments for PvP environments.</p>
     </div>
     <div class="card">
       <h3>Developer — Skyhaven</h3>
-      <p>Worked on performance tuning, gameplay design, and backend plugin systems.</p>
+      <p>Custom systems for gameplay balancing, command frameworks and performance tuning.</p>
     </div>
     <div class="card">
-      <h3>Plugin Developer — Blitz SMP</h3>
-      <p>Optimized backend features and balance systems for 750+ players.</p>
-    </div>
-    <div class="card">
-      <h3>Plugin Developer — LaternMC</h3>
-      <p>Created advanced plugins and helped scale server infrastructure.</p>
-    </div>
-    <div class="card">
-      <h3>Plugin Developer — Peak SMP</h3>
-      <p>Delivered scalable features with Java and Docker for large multiplayer networks.</p>
+      <h3>Blitz SMP / LaternMC / Peak SMP</h3>
+      <p>Backend plugin systems supporting 500–750+ players with optimized code and features.</p>
     </div>
   </section>
 
-  <section id="projects">
+  <section id="projects" style="animation-delay: 0.5s;">
     <h2>Projects</h2>
     <div class="card">
       <h3><a href="https://github.com/Devbramcraft/AngelsSMP" target="_blank" style="color: var(--accent);">AngelsSMP</a></h3>
-      <p>Ability-based SMP with plugin-driven mechanics, teams and progression systems.</p>
+      <p>Ability-based Minecraft SMP with team logic, balanced abilities, and persistent storage.</p>
     </div>
     <div class="card">
       <h3><a href="https://github.com/devBramCraft/tiertaggerbramnet" target="_blank" style="color: var(--accent);">TierTagger</a></h3>
-      <p>Fabric mod that displays tier labels above player heads, synced with an external tierlist API.</p>
-    </div>
-    <div class="card">
-      <h3>CrystalKit</h3>
-      <p>A Bukkit plugin that manages PvP kits and timed combat events.</p>
+      <p>Fabric mod displaying live tier data above player heads using external APIs.</p>
     </div>
     <div class="card">
       <h3>MagicFeathers</h3>
-      <p>Custom Fabric mod that adds magical abilities linked to unique items.</p>
+      <p>Custom Fabric mod introducing magical items with unique abilities and cooldowns.</p>
     </div>
   </section>
 
-  <section id="about">
-    <img src="aboutme.jpg" alt="About Me" />
+  <section id="about" style="animation-delay: 0.7s;">
+    <img src="aboutme.jpg" alt="Photo or banner representing Bram" />
     <h2>About Me</h2>
     <p>
-      I’m Bram, 13 years old, and passionate about game development and backend logic. I specialize in Minecraft plugin systems, Discord bot automation, and tools built in JavaScript and Java.  
-      I also use <strong>Karate</strong> for automated API testing.
+      My name is Bram, I’m 13 years old and passionate about software development, Minecraft mechanics, and automation.
+      I specialize in Java, plugin systems, Discord bots and integration tools. I also use <strong>Karate</strong> for automated testing.
     </p>
   </section>
 
-  <section id="contact">
+  <section id="contact" style="animation-delay: 0.9s;">
     <h2>Contact</h2>
-    <p>You can reach out to me anytime through one of the platforms below:</p>
+    <p>You can contact me via email, Discord or LinkedIn:</p>
     <div class="btn-row">
-      <a href="mailto:bram.wijnen@bramcraft.net"><button class="btn">Email Me</button></a>
-      <a href="https://discord.gg/HjCcfUrzzJ" target="_blank"><button class="btn">Discord</button></a>
-      <a href="https://www.linkedin.com/in/bram-wijnen-66a002361/" target="_blank"><button class="btn">LinkedIn</button></a>
+      <a href="mailto:bram.wijnen@bramcraft.net" class="btn">Email</a>
+      <a href="https://discord.gg/HjCcfUrzzJ" class="btn" target="_blank">Discord</a>
+      <a href="https://www.linkedin.com/in/bram-wijnen-66a002361/" class="btn" target="_blank">LinkedIn</a>
     </div>
   </section>
 </body>
