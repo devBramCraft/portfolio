@@ -1,168 +1,631 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing - Bram's Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Pricing specific styles */
-        .pricing-container {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-        
-        .pricing-plans {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        
-        .pricing-card {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            padding: 30px;
-            width: 300px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin: 20px 0;
-            color: #2c3e50;
-        }
-        
-        .price span {
-            font-size: 1rem;
-            font-weight: normal;
-        }
-        
-        .pricing-features {
-            list-style: none;
-            padding: 0;
-            margin: 30px 0;
-        }
-        
-        .pricing-features li {
-            margin: 15px 0;
-            position: relative;
-            padding-left: 20px;
-        }
-        
-        .pricing-features li:before {
-            content: "✓";
-            color: #27ae60;
-            position: absolute;
-            left: 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing | Bram's Development Services</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #0f0f11;
+      --panel-dark: #18181b;
+      --text-dark: #eaeaea;
+      --bg-light: #ffffff;
+      --panel-light: #f5f5f5;
+      --text-light: #1f1f1f;
+      --accent: #3f8efc;
+      --accent-hover: #2d7ae6;
+      --popular: #ff6b6b;
+    }
+
+    [data-theme="dark"] {
+      --bg: var(--bg-dark);
+      --panel: var(--panel-dark);
+      --text: var(--text-dark);
+    }
+
+    [data-theme="light"] {
+      --bg: var(--bg-light);
+      --panel: var(--panel-light);
+      --text: var(--text-light);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Navigation - matches your main site */
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background-color: var(--panel);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+      border-bottom: 1px solid rgba(138, 138, 138, 0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background-color: var(--accent);
+      color: white;
+    }
+
+    /* Main Content */
+    main {
+      padding: 7rem 2rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 3rem;
+    }
+
+    .pricing-intro {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+
+    /* Pricing Tabs */
+    .pricing-tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .tab-btn {
+      padding: 0.8rem 1.5rem;
+      background: var(--panel);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    /* Pricing Cards */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .pricing-card {
+      background: var(--panel);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(138, 138, 138, 0.1);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .pricing-card.popular {
+      border: 2px solid var(--popular);
+    }
+
+    .popular-tag {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: var(--popular);
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .price {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+
+    .price span {
+      font-size: 1rem;
+      font-weight: normal;
+      opacity: 0.8;
+    }
+
+    .features-list {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .features-list li {
+      margin: 0.8rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .features-list li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .btn {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      background: var(--accent);
+      color: white;
+      padding: 0.8rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Custom Addons Section */
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .addon-card {
+      background: var(--panel);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--accent);
+    }
+
+    /* Long-term Hire Section */
+    .hire-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .hire-card {
+      flex: 1;
+      min-width: 250px;
+      background: var(--panel);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-top: 4px solid var(--accent);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      main {
+        padding: 6rem 1rem 2rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation Menu -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="logo">
-                <a href="index.html">Bram's Portfolio</a>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="pricing.html" class="nav-link active">Pricing</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
-    </header>
+  <nav>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <i class="fas fa-moon"></i> Toggle Theme
+    </button>
+  </nav>
 
-    <!-- Main Content -->
-    <main class="pricing-container">
-        <h1>My Pricing Plans</h1>
-        <p class="subtitle">Choose the plan that works best for your needs</p>
-        
-        <div class="pricing-plans">
-            <!-- Basic Plan -->
-            <div class="pricing-card">
-                <h2>Basic</h2>
-                <div class="price">$99<span>/project</span></div>
-                <ul class="pricing-features">
-                    <li>Simple website design</li>
-                    <li>Up to 5 pages</li>
-                    <li>Basic SEO setup</li>
-                    <li>1 revision round</li>
-                    <li>1 week delivery</li>
-                </ul>
-                <button class="cta-button">Get Started</button>
-            </div>
-            
-            <!-- Standard Plan -->
-            <div class="pricing-card featured">
-                <h2>Standard</h2>
-                <div class="price">$249<span>/project</span></div>
-                <ul class="pricing-features">
-                    <li>Custom website design</li>
-                    <li>Up to 10 pages</li>
-                    <li>Advanced SEO</li>
-                    <li>3 revision rounds</li>
-                    <li>Mobile responsive</li>
-                    <li>2 weeks delivery</li>
-                </ul>
-                <button class="cta-button">Get Started</button>
-            </div>
-            
-            <!-- Premium Plan -->
-            <div class="pricing-card">
-                <h2>Premium</h2>
-                <div class="price">$499<span>/project</span></div>
-                <ul class="pricing-features">
-                    <li>Full custom design</li>
-                    <li>Unlimited pages</li>
-                    <li>Premium SEO</li>
-                    <li>5 revision rounds</li>
-                    <li>Mobile responsive</li>
-                    <li>CMS integration</li>
-                    <li>1 month delivery</li>
-                </ul>
-                <button class="cta-button">Get Started</button>
-            </div>
+  <main>
+    <h1>Development Services & Pricing</h1>
+    <div class="pricing-intro">
+      <p>Custom solutions tailored to your needs. Choose from one-time projects or long-term collaboration options.</p>
+    </div>
+
+    <div class="pricing-tabs">
+      <button class="tab-btn active" data-tab="plugins">Java Plugins</button>
+      <button class="tab-btn" data-tab="webdev">Web Development</button>
+      <button class="tab-btn" data-tab="bots">JavaScript Bots</button>
+      <button class="tab-btn" data-tab="longterm">Long-Term Hire</button>
+    </div>
+
+    <!-- Java Plugins Tab -->
+    <div id="plugins" class="tab-content active">
+      <h2>Minecraft Java Plugin Development</h2>
+      <p>Custom plugins built for Spigot/Paper servers with optimized performance and clean code.</p>
+      
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Basic Plugin</h3>
+          <div class="price">$50-150</div>
+          <ul class="features-list">
+            <li>Simple custom plugin</li>
+            <li>1-2 core features</li>
+            <li>Basic configuration</li>
+            <li>1 revision round</li>
+            <li>1 week delivery</li>
+          </ul>
+          <a href="#contact" class="btn">Get Started</a>
         </div>
         
-        <div class="custom-request">
-            <p>Need something custom? <a href="contact.html">Contact me</a> for a personalized quote.</p>
+        <div class="pricing-card popular">
+          <div class="popular-tag">POPULAR</div>
+          <h3>Advanced Plugin</h3>
+          <div class="price">$150-400</div>
+          <ul class="features-list">
+            <li>Medium complexity plugin</li>
+            <li>3-5 core features</li>
+            <li>Custom GUI/API integration</li>
+            <li>MySQL support</li>
+            <li>3 revision rounds</li>
+            <li>2 weeks delivery</li>
+          </ul>
+          <a href="#contact" class="btn">Get Started</a>
         </div>
-    </main>
+        
+        <div class="pricing-card">
+          <h3>Premium System</h3>
+          <div class="price">$400-1000+</div>
+          <ul class="features-list">
+            <li>Complex plugin/system</li>
+            <li>Multiple integrated features</li>
+            <li>Custom API/economy</li>
+            <li>Advanced configuration</li>
+            <li>5+ revision rounds</li>
+            <li>1 month+ development</li>
+          </ul>
+          <a href="#contact" class="btn">Get Started</a>
+        </div>
+      </div>
+      
+      <h3>Popular Plugin Addons</h3>
+      <div class="addons-grid">
+        <div class="addon-card">
+          <h4>TierTagger System</h4>
+          <p>Custom rank prefix system with purchaseable upgrades and dynamic permissions.</p>
+          <p><strong>$75-200</strong> addon</p>
+        </div>
+        <div class="addon-card">
+          <h4>Custom Economy</h4>
+          <p>Integrated economy system with shops, banks, and custom currency.</p>
+          <p><strong>$100-250</strong> addon</p>
+        </div>
+        <div class="addon-card">
+          <h4>Minigame Framework</h4>
+          <p>Custom minigame system with lobby, queues, and score tracking.</p>
+          <p><strong>$150-300</strong> addon</p>
+        </div>
+      </div>
+    </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2023 Bram's Portfolio. All rights reserved.</p>
-    </footer>
+    <!-- Web Development Tab -->
+    <div id="webdev" class="tab-content">
+      <h2>Website Development</h2>
+      <p>Custom websites for Minecraft servers or personal/professional use.</p>
+      
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Basic Website</h3>
+          <div class="price">$100-250</div>
+          <ul class="features-list">
+            <li>1-3 page static site</li>
+            <li>Responsive design</li>
+            <li>Basic styling</li>
+            <li>1 revision round</li>
+            <li>1 week delivery</li>
+          </ul>
+          <a href="#contact" class="btn">Get Started</a>
+        </div>
+        
+        <div class="pricing-card popular">
+          <div class="popular-tag">POPULAR</div>
+          <h3>Dynamic Site</h3>
+          <div class="price">$250-600</div>
+          <ul class="features-list">
+            <li>5-10 page dynamic site</li>
+            <li>Custom design</li>
+            <li>User accounts</li>
+            <li>Database integration</li>
+            <li>3 revision rounds</li>
+            <li>2-3 weeks delivery</li>
+          </ul>
+          <a href="#contact" class="btn">Get Started</a>
+        </div>
+        
+        <div class="pricing-card">
+          <h3>Full Web App</h3>
+          <div class="price">$600-2000+</div>
+          <ul class="features-list">
+            <li>Complex web application</li>
+            <li>Custom backend</li>
+            <li>API integration</li>
+            <li>Payment systems</li>
+            <li>5+ revision rounds</li>
+            <li>1 month+ development</li>
+          </ul>
+          <a href="#contact" class="btn">Get Started</a>
+        </div>
+      </div>
+      
+      <h3>Web Addons</h3>
+      <div class="addons-grid">
+        <div class="addon-card">
+          <h4>Server Status</h4>
+          <p>Live Minecraft server status panel with player tracking.</p>
+          <p><strong>$50-150</strong> addon</p>
+        </div>
+        <div class="addon-card">
+          <h4>Store Integration</h4>
+          <p>Integrated Tebex/Buycraft store with custom design.</p>
+          <p><strong>$75-200</strong> addon</p>
+        </div>
+        <div class="addon-card">
+          <h4>Discord Link</h4>
+          <p>Discord bot integration with verification and sync.</p>
+          <p><strong>$50-150</strong> addon</p>
+        </div>
+      </div>
+    </div>
 
-    <!-- JavaScript for mobile menu toggle -->
-    <script>
-        const hamburger = document.querySelector(".hamburger");
-        const navMenu = document.querySelector(".nav-menu");
+    <!-- JavaScript Bots Tab -->
+    <div id="bots" class="tab-content">
+      <h2>Discord/JavaScript Bots</h2>
+      <p>Custom Discord bots for server management, games, and utilities.</p>
+      
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Basic Bot</h3>
+          <div class="price">$50-150</div>
+          <ul class="features-list">
+            <li>Simple commands</li>
+            <li>Basic moderation</li>
+            <li>1-2 features</li>
+            <li>1 revision round</li>
+            <li>1 week delivery</li>
+          </ul>
+          <a href="#contact" class="btn">Get Started</a>
+        </div>
+        
+        <div class="pricing-card popular">
+          <div class="popular-tag">POPULAR</div>
+          <h3>Advanced Bot</h3>
+          <div class="price">$150-400</div>
+          <ul class="features-list">
+            <li>Custom commands</li>
+            <li>Database integration</li>
+            <li>Web dashboard</li>
+            <li>3-5 features</li>
+            <li>3 revision rounds</li>
+            <li>2 weeks delivery</li>
+          </ul>
+          <a href="#contact" class="btn">Get Started</a>
+        </div>
+        
+        <div class="pricing-card">
+          <h3>Premium Bot System</h3>
+          <div class="price">$400-1000+</div>
+          <ul class="features-list">
+            <li>Complex bot system</li>
+            <li>Multiple integrations</li>
+            <li>Custom API</li>
+            <li>User accounts</li>
+            <li>5+ features</li>
+            <li>1 month+ development</li>
+          </ul>
+          <a href="#contact" class="btn">Get Started</a>
+        </div>
+      </div>
+    </div>
 
-        hamburger.addEventListener("click", () => {
-            hamburger.classList.toggle("active");
-            navMenu.classList.toggle("active");
+    <!-- Long-Term Hire Tab -->
+    <div id="longterm" class="tab-content">
+      <h2>Long-Term Hire Options</h2>
+      <p>Ongoing development and maintenance for your projects.</p>
+      
+      <div class="hire-options">
+        <div class="hire-card">
+          <h3>Part-Time</h3>
+          <div class="price">$500-1000/month</div>
+          <ul class="features-list">
+            <li>10-15 hours/week</li>
+            <li>Ongoing maintenance</li>
+            <li>Feature updates</li>
+            <li>Priority support</li>
+            <li>Weekly updates</li>
+          </ul>
+          <a href="#contact" class="btn">Inquire Now</a>
+        </div>
+        
+        <div class="hire-card">
+          <h3>Full-Time</h3>
+          <div class="price">$1500-3000/month</div>
+          <ul class="features-list">
+            <li>30-40 hours/week</li>
+            <li>Dedicated developer</li>
+            <li>Full project management</li>
+            <li>24/7 emergency support</li>
+            <li>Daily updates</li>
+          </ul>
+          <a href="#contact" class="btn">Inquire Now</a>
+        </div>
+      </div>
+      
+      <h3>What's Included:</h3>
+      <ul class="features-list">
+        <li>Custom development based on your needs</li>
+        <li>Regular updates and new features</li>
+        <li>Bug fixes and troubleshooting</li>
+        <li>Performance optimization</li>
+        <li>Technical consulting</li>
+      </ul>
+    </div>
+
+    <div style="text-align: center; margin-top: 4rem;">
+      <h2>Ready to Start Your Project?</h2>
+      <p>Contact me to discuss your specific needs and get a personalized quote.</p>
+      <a href="#contact" class="btn" style="max-width: 300px; margin: 1rem auto;">
+        <i class="fas fa-envelope"></i> Contact Me
+      </a>
+    </div>
+  </main>
+
+  <script>
+    // Theme toggle to match your main site
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const newTheme = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      
+      const icon = document.querySelector('.theme-toggle i');
+      if (newTheme === 'dark') {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      } else {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      }
+    }
+
+    // Tab switching functionality
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active from all buttons and tabs
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        
+        // Add active to clicked button and corresponding tab
+        btn.classList.add('active');
+        const tabId = btn.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
         });
-
-        document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
-            hamburger.classList.remove("active");
-            navMenu.classList.remove("active");
-        }));
-    </script>
+      });
+    });
+  </script>
 </body>
 </html>
